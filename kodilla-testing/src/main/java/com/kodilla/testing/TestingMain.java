@@ -13,15 +13,33 @@ public class TestingMain {
             System.out.println("Error!");
         }
 
-        System.out.println("Test - pierwszy test jednostkowy:");
+        //TEST: PIERWSZY TEST JEDNOSTKOWY ===========================
+        System.out.println("\nTest - pierwszy test jednostkowy:\n");
 
         Calculator calc = new Calculator();
-        int resultAdd = calc.add(2,2);
 
-        System.out.println("\nWynik dodawania: " + resultAdd);
+        int a = 2;
+        int b = 2;
+        int resultAdd = calc.add(a,b);
 
-        int resultSubstract = calc.substract(3,2);
+        System.out.println("Wynik dodawania cyfr " + a + " i " + b + ": " + resultAdd);
+        //test dodawania
+        if(resultAdd==(a+b)) {
+            System.out.println("Add test OK");
+        } else {
+            System.out.println("Error!");
+        }
 
-        System.out.println("\nWynik odejmowania: " + resultSubstract);
+        a = 3;
+        b = 2;
+        int resultSubstract = calc.substract(a,b);
+
+        System.out.println("\nWynik odejmowania " + b + " od " + a + ": " + resultSubstract);
+        //test odejmowania
+        if(resultSubstract==(a-b)) {
+            System.out.println("Substract test OK");
+        } else {
+            System.out.println("Error!");
+        }
     }
 }
