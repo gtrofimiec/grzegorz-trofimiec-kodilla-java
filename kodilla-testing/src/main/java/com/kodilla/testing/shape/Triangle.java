@@ -1,10 +1,10 @@
 package com.kodilla.testing.shape;
 
-public class Square implements Shape {
+public class Triangle implements Shape {
     private String shapeName;
     private int shapeField;
 
-    public Square(String shapeName, int shapeField) {
+    public Triangle(String shapeName, int shapeField) {
         this.shapeName = shapeName;
         this.shapeField = shapeField;
     }
@@ -16,4 +16,5 @@ public class Square implements Shape {
     public int getField() {
         return shapeField;
     }
+
 }

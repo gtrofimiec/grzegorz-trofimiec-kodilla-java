@@ -24,60 +24,68 @@ class ShapeCollectorTestSuite {
         System.out.println("Preparing to execute test #" + testCounter);
     }
 
-    @Test
-    void testAddFigure() {
-        //Given
-        Shape circle = new Circle("Circle", 1);
-        ShapeCollector shapesCollection = new ShapeCollector();
+    @Nested
+    @DisplayName("Testing: adding and removing")
+    class AddAndRemoveTest {
+        @Test
+        void testAddFigure() {
+            //Given
+            Shape circle = new Circle("Circle", 1);
+            ShapeCollector shapesCollection = new ShapeCollector();
 
-        //When
-        shapesCollection.addFigure(circle);
+            //When
+            shapesCollection.addFigure(circle);
 
-        //Then
-        Assertions.assertEquals(1, shapesCollection.getFiguresQuantity());
+            //Then
+            String shapeName = circle.getShapeName();
+            Assertions.assertEquals(shapeName, "Circle");
+        }
+
+        @Test
+        void testRemoveFigure() {
+            //Given
+            Shape circle = new Circle("Circle", 1);
+            ShapeCollector shapesCollection = new ShapeCollector();
+            shapesCollection.addFigure(circle);
+
+            //When
+            boolean result = shapesCollection.removeFigure(circle);
+
+            //Then
+            Assertions.assertTrue(result);
+        }
     }
 
-    @Test
-    void testRemoveFigure() {
-        //Given
-        Shape circle = new Circle("Circle", 1);
-        ShapeCollector shapesCollection = new ShapeCollector();
-        shapesCollection.addFigure(circle);
+    @Nested
+    @DisplayName("Testing: getting and showing")
+    class GetAndShowTest {
+        @Test
+        void testGetFigure() {
+            //Given
+            Shape circle = new Circle("Circle", 1);
+            ShapeCollector shapesCollection = new ShapeCollector();
+            shapesCollection.addFigure(circle);
 
-        //When
-        boolean result = shapesCollection.removeFigure(circle);
+            //When
+            Shape retrievedShape;
+            retrievedShape = shapesCollection.getFigure(0);
 
-        //Then
-        Assertions.assertTrue(result);
-        Assertions.assertEquals(0, shapesCollection.getFiguresQuantity());
-    }
+            //Then
+            Assertions.assertEquals(circle, retrievedShape);
+        }
 
-    @Test
-    void testGetFigure() {
-        //Given
-        Shape circle = new Circle("Circle", 1);
-        ShapeCollector shapesCollection = new ShapeCollector();
-        shapesCollection.addFigure(circle);
+        @Test
+        void testShowFigures() {
+            //Given
+            Shape circle = new Circle("Circle", 1);
+            ShapeCollector shapesCollection = new ShapeCollector();
+            shapesCollection.addFigure(circle);
 
-        //When
-        Shape retrievedShape;
-        retrievedShape = shapesCollection.getFigure(1);
+            //When
+            List<Shape> list = shapesCollection.showFigures();
 
-        //Then
-        Assertions.assertEquals(circle, retrievedShape);
-    }
-
-    @Test
-    void testShowFigures() {
-        //Given
-        Shape circle = new Circle("Circle", 1);
-        ShapeCollector shapesCollection = new ShapeCollector();
-        shapesCollection.addFigure(circle);
-
-        //When
-        List<Shape> list = shapesCollection.showFigures();
-
-        //Then
-        Assertions.assertTrue(list.size() != 0);
+            //Then
+            Assertions.assertTrue(list.size() != 0);
+        }
     }
 }

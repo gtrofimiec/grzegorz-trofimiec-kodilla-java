@@ -9,11 +9,16 @@ public class Circle implements Shape {
         this.shapeField = shapeField;
     }
 
-    @Override
-    public void getShapeName() {
+    public String getShapeName() {
+        return shapeName;
+    }
+
+    public int getField() {
+        return shapeField;
     }
 
     @Override
-    public void getField() {
+    public String toString() {
+        return shapeName;
     }
 }

@@ -6,25 +6,27 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    private List<Shape> shapes = new ArrayList<>();
+    private List<Shape> shapesList = new ArrayList<>();
 
     public void addFigure(Shape shape) {
-        // do nothing
-    }
-
-    public int getFiguresQuantity() {
-        return 3;
+        shapesList.add(shape);
     }
 
     public boolean removeFigure(Shape shape) {
-        return true;
+        boolean result = false;
+        if(shapesList.contains(shape)) {
+            shapesList.remove(shape);
+            result = true;
+        }
+        return result;
     }
 
     public Shape getFigure(int n) {
-        return null;
+        Shape shape = shapesList.get(n);
+        return shape;
     }
 
     public List<Shape> showFigures() {
-        return shapes;
+        return shapesList;
     }
 }
