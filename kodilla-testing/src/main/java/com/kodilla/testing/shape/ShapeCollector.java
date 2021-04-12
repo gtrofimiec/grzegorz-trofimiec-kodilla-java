@@ -8,8 +8,13 @@ public class ShapeCollector {
 
     private List<Shape> shapesList = new ArrayList<>();
 
-    public void addFigure(Shape shape) {
+    public boolean addFigure(Shape shape) {
+        boolean result = false;
         shapesList.add(shape);
+        if(shapesList.contains(shape)) {
+            result = true;
+        }
+        return result = true;
     }
 
     public boolean removeFigure(Shape shape) {

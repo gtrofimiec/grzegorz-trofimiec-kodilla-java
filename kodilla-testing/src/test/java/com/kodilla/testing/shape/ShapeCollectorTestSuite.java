@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
+
 import java.util.List;
 
 @DisplayName("TDD: Shapes Collection Test Suite")
@@ -34,11 +35,10 @@ class ShapeCollectorTestSuite {
             ShapeCollector shapesCollection = new ShapeCollector();
 
             //When
-            shapesCollection.addFigure(circle);
+            boolean result = shapesCollection.addFigure(circle);
 
             //Then
-            String shapeName = circle.getShapeName();
-            Assertions.assertEquals(shapeName, "Circle");
+            Assertions.assertTrue(result);
         }
 
         @Test
