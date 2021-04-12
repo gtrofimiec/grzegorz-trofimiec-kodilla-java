@@ -1,7 +1,6 @@
 package com.kodilla.testing.weather.stub;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class WeatherForecast {
     private Temperatures temperatures;
@@ -18,8 +17,35 @@ public class WeatherForecast {
 
             // adding 1 celsius degree to current value
             // as a temporary weather forecast
-            resultMap.put(temperature.getKey(), temperature.getValue() + 1.0); // [1]
+            resultMap.put(temperature.getKey(), temperature.getValue() + 1.0);
         }
         return resultMap;
+    }
+
+    public double calculateAverageTemperatures() {
+        int avTemp = 0;
+        int sumTemp = 0;
+        for (Map.Entry<String, Double> temperature :
+                temperatures.getTemperatures().entrySet()) {
+            sumTemp += temperature.getValue();
+        }
+        return avTemp = sumTemp / temperatures.getTemperatures().size();
+    }
+
+    public double calculateMedianTemperatures() {
+        List<Double> tempList = new ArrayList<>();
+        double medTemp = 0;
+        for (Map.Entry<String, Double> temperature :
+                temperatures.getTemperatures().entrySet()) {
+            tempList.add(temperature.getValue());
+        }
+        Collections.sort(tempList);
+        if (tempList.size() % 2 == 0) {
+            medTemp = tempList.get((tempList.size() / 2))
+                    + tempList.get(((tempList.size() / 2) + 1));
+        } else {
+            medTemp = tempList.get((tempList.size() / 2));
+        }
+        return medTemp;
     }
 }
