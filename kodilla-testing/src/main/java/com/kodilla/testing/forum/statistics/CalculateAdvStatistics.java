@@ -13,7 +13,7 @@ public class CalculateAdvStatistics {
     public int usersCount() {
         List<String> usersNames = new ArrayList<>();
 
-        for(String name : statistics.usersNames()) {
+        for (String name : statistics.usersNames()) {
             usersNames.add(name);
         }
 
@@ -26,18 +26,33 @@ public class CalculateAdvStatistics {
         return postsCount;
     }
 
+    public int commentsCount() {
+        int commentsCount = statistics.commentsCount();
+        return commentsCount;
+    }
+
     public double avgPostsCountPerUser() {
-        List<Statistics> usersNames = new ArrayList<>();
+        List<String> usersNames = new ArrayList<>();
+
+        for (String name : statistics.usersNames()) {
+            usersNames.add(name);
+        }
         int usersCount = usersNames.size();
         int postsCount = statistics.postsCount();
+
         double avgPostsCountPerUser = usersCount / postsCount;
         return avgPostsCountPerUser;
     }
 
     public double avgCommentsCountPerUser() {
-        List<Statistics> usersNames = new ArrayList<>();
+        List<String> usersNames = new ArrayList<>();
+
+        for (String name : statistics.usersNames()) {
+            usersNames.add(name);
+        }
         int usersCount = usersNames.size();
         int commentsCount = statistics.commentsCount();
+
         double avgCommentsCountPerUser = usersCount / commentsCount;
         return avgCommentsCountPerUser;
     }
@@ -45,6 +60,7 @@ public class CalculateAdvStatistics {
     public double avgCommentsCountPerPost() {
         int commentsCount = statistics.commentsCount();
         int postsCount = statistics.postsCount();
+
         double avgCommentsCountPerPost = commentsCount / postsCount;
         return avgCommentsCountPerPost;
     }

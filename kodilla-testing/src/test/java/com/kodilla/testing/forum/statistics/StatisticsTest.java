@@ -35,17 +35,20 @@ public class StatisticsTest {
 
         @DisplayName("Test: the number of posts = 0")
         @Test
-        void postCountTestNullCondition() {
+        void AvgWithNullPostsCondition() {
             //Given
             Statistics statisticsMock = mock(Statistics.class);
-            when(statisticsMock.postsCount()).thenReturn(0);
+            //when(statisticsMock.postsCount()).thenReturn(0);
             CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
 
             //When
-            int postsCountTest = forumStats.postsCount();
+            int postsCount = 0;
+            double usersCount = forumStats.usersCount();
+            double avgPostsPerUser = postsCount / usersCount;
+
 
             //Then
-            Assertions.assertEquals(0, postsCountTest);
+            Assertions.assertEquals(0, avgPostsPerUser);
         }
 
         @DisplayName("Test: the number of posts = 1000")
@@ -70,7 +73,7 @@ public class StatisticsTest {
 
         @DisplayName("Test: the number of comments = 0")
         @Test
-        void commentsCountTestNullCondition() {
+        void AdvWithNullCommentsCondition() {
             //Given
             Statistics statisticsMock = mock(Statistics.class);
             when(statisticsMock.commentsCount()).thenReturn(0);
