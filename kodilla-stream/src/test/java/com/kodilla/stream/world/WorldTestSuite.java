@@ -21,15 +21,15 @@ public class WorldTestSuite {
         Continent continent3 = new Continent("Africa");
 
         //Create countries
-        Country country1 = new Country("Poland",continent1, new BigDecimal("100"));
-        Country country2 = new Country("France",continent1, new BigDecimal("100"));
-        Country country3 = new Country("Spain",continent1, new BigDecimal("100"));
-        Country country4 = new Country("China",continent2, new BigDecimal("100"));
-        Country country5 = new Country("India",continent2, new BigDecimal("100"));
-        Country country6 = new Country("Japan",continent2, new BigDecimal("100"));
-        Country country7 = new Country("Egypt",continent2, new BigDecimal("100"));
-        Country country8 = new Country("Sudan",continent2, new BigDecimal("100"));
-        Country country9 = new Country("Algeria",continent2, new BigDecimal("100"));
+        Country country1 = new Country("Poland", new BigDecimal("100"));
+        Country country2 = new Country("France", new BigDecimal("100"));
+        Country country3 = new Country("Spain", new BigDecimal("100"));
+        Country country4 = new Country("China", new BigDecimal("100"));
+        Country country5 = new Country("India", new BigDecimal("100"));
+        Country country6 = new Country("Japan", new BigDecimal("100"));
+        Country country7 = new Country("Egypt", new BigDecimal("100"));
+        Country country8 = new Country("Sudan", new BigDecimal("100"));
+        Country country9 = new Country("Algeria", new BigDecimal("100"));
 
         //Creating continents in world
         world.addWorldContinent(continent1);

@@ -11,10 +11,6 @@ public final class Continent {
         this.continentName = continentName;
     }
 
-    public String getContinentName() {
-        return continentName;
-    }
-
     public void addContinentCountry(Country country) {
         continentCountries.add(country);
     }
