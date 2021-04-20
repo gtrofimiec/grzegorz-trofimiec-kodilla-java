@@ -4,65 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CalculateAdvStatistics {
-    private Statistics statistics;
+    public Statistics statistics;
+    int usersCount;
+    int postsCount;
+    int commentsCount;
+    double avgPostsPerUser;
+    double avgCommentsPerUser;
+    double avgCommentsPerPost;
 
-    public CalculateAdvStatistics(Statistics statistics) {
-        this.statistics = statistics;
-    }
 
-    public int usersCount() {
-        List<String> usersNames = new ArrayList<>();
+    public void calculateAdvStatistics(Statistics statistics) {
 
-        for (String name : statistics.usersNames()) {
-            usersNames.add(name);
+        List<Statistics> userNames = new ArrayList<>();
+        usersCount = userNames.size();
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+
+        if(commentsCount!=0) {
+            avgPostsPerUser= statistics.postsCount() / statistics.usersNames().size();
+        } else {
+            System.out.println("Error: Count of comments = 0!");
         }
 
-        int usersCount = usersNames.size();
-        return usersCount;
-    }
-
-    public int postsCount() {
-        int postsCount = statistics.postsCount();
-        return postsCount;
-    }
-
-    public int commentsCount() {
-        int commentsCount = statistics.commentsCount();
-        return commentsCount;
-    }
-
-    public double avgPostsCountPerUser() {
-        List<String> usersNames = new ArrayList<>();
-
-        for (String name : statistics.usersNames()) {
-            usersNames.add(name);
+        if(usersCount!=0) {
+            avgCommentsPerUser = commentsCount / usersCount;
+        } else {
+            System.out.println("Error: Count of users = 0!");
         }
-        int usersCount = usersNames.size();
-        int postsCount = statistics.postsCount();
 
-        double avgPostsCountPerUser = usersCount / postsCount;
-        return avgPostsCountPerUser;
-    }
-
-    public double avgCommentsCountPerUser() {
-        List<String> usersNames = new ArrayList<>();
-
-        for (String name : statistics.usersNames()) {
-            usersNames.add(name);
+        if(postsCount!=0) {
+            avgCommentsPerPost = commentsCount / postsCount;
+        } else {
+            System.out.println("Error: Count of posts = 0!");
         }
-        int usersCount = usersNames.size();
-        int commentsCount = statistics.commentsCount();
-
-        double avgCommentsCountPerUser = usersCount / commentsCount;
-        return avgCommentsCountPerUser;
-    }
-
-    public double avgCommentsCountPerPost() {
-        int commentsCount = statistics.commentsCount();
-        int postsCount = statistics.postsCount();
-
-        double avgCommentsCountPerPost = commentsCount / postsCount;
-        return avgCommentsCountPerPost;
     }
 
     public void showStatistics() {
