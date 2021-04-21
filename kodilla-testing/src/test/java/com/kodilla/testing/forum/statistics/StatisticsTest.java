@@ -1,7 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
 import org.junit.jupiter.api.*;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,47 +15,50 @@ public class StatisticsTest {
     @BeforeEach
     public void beforeEveryTest() {
     }
+
     @Nested
     @DisplayName("Posts tests")
     class PostsTests {
-        @Mock
-        private Statistics statisticsMock;
 
         @DisplayName("Test: the number of posts = 0")
         @Test
         void AvgCommentsPerPostWithNullPostsCondition() {
+
             //Given
-            //Statistics statisticsMock = mock(Statistics.class);
-
-            when(statisticsMock.postsCount()).thenReturn(0);
-            when(statisticsMock.commentsCount()).thenReturn(10);
-
+            Statistics statisticsMock = mock(Statistics.class);
             CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
 
+            when(statisticsMock.commentsCount()).thenReturn(10);
+            when(statisticsMock.postsCount()).thenReturn(0);
 
             //When
-            int postsCount = forumStats.postsCount;
-            int commentsCount = forumStats.commentsCount;
-            double avgPostsPerUser = commentsCount / postsCount;
             forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertEquals(1,avgPostsPerUser);
+            Assertions.assertEquals(0,forumStats.getAvgCommentsPerPost());
         }
 
         @DisplayName("Test: the number of posts = 1000")
         @Test
-        void postCountTest1000Condition() {
+        void AvgPostsPerUserWith1000PostsCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
+
+            List<String> mockUsersNames = new ArrayList<>();
+
+            for (int i = 1; i <= 100; i++) {
+                mockUsersNames.add("Name" + i);
+            }
+
             when(statisticsMock.postsCount()).thenReturn(1000);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+            when(statisticsMock.usersNames()).thenReturn(mockUsersNames);
 
             //When
-            //int postsCountTest = forumStats.postsCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertEquals(1000, postsCountTest);
+            Assertions.assertEquals(10,forumStats.getAvgPostsPerUser(), 0.01);
         }
     }
 
@@ -65,51 +68,59 @@ public class StatisticsTest {
 
         @DisplayName("Test: the number of comments = 0")
         @Test
-        void AdvWithNullCommentsCondition() {
+        void AvgCommentsPerUserWithNullCommentsCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
+
+            List<String> mockUsersNames = new ArrayList<>();
+
+            for (int i = 1; i <= 100; i++) {
+                mockUsersNames.add("Name" + i);
+            }
+
             when(statisticsMock.commentsCount()).thenReturn(0);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+            when(statisticsMock.usersNames()).thenReturn(mockUsersNames);
 
             //When
-            //int commentsCountTest = forumStats.postsCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertEquals(0, commentsCountTest);
+            Assertions.assertEquals(0,forumStats.getAvgCommentsPerUser(), 0.01);
         }
 
         @DisplayName("Test: the number of comments is less than the number of posts")
         @Test
         void commentsCountLessThanPostsCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
-            when(statisticsMock.commentsCount()).thenReturn(100);
-            when(statisticsMock.postsCount()).thenReturn(1000);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            when(statisticsMock.commentsCount()).thenReturn(10);
+            when(statisticsMock.postsCount()).thenReturn(11);
+
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
 
             //When
-            int commentsCountTest = statisticsMock.commentsCount();
-            //int postsCountTest = forumStats.postsCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertTrue(commentsCountTest < postsCountTest);
+            Assertions.assertEquals(0.91,forumStats.getAvgCommentsPerPost(),0.01);
         }
 
         @DisplayName("Test: the number of comments is greater than the number of posts")
         @Test
         void commentsCountGreaterThanPostsCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
-            when(statisticsMock.commentsCount()).thenReturn(1000);
-            when(statisticsMock.postsCount()).thenReturn(100);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            when(statisticsMock.commentsCount()).thenReturn(10);
+            when(statisticsMock.postsCount()).thenReturn(9);
+
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
 
             //When
-            int commentsCountTest = statisticsMock.commentsCount();
-            //int postsCountTest = forumStats.postsCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertTrue(commentsCountTest > postsCountTest);
+            Assertions.assertEquals(1.11,forumStats.getAvgCommentsPerPost(), 0.01);
         }
     }
 
@@ -118,37 +129,44 @@ public class StatisticsTest {
     class UsersTests {
         @DisplayName("When users count = 0")
         @Test
-        void userCountTestNullUsersCondition() {
+        void AvgPostsPerUserWithNullUsersCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
-            List<String> usersList = new ArrayList<>();
-            when(statisticsMock.usersNames()).thenReturn(usersList);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
+
+            List<String> mockUsersNames = new ArrayList<>();
+
+            when(statisticsMock.postsCount()).thenReturn(10);
+            when(statisticsMock.usersNames()).thenReturn(mockUsersNames);
 
             //When
-            //int usersCount = forumStats.usersCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertEquals(0, usersCount);
+            Assertions.assertEquals(0,forumStats.getAvgPostsPerUser(), 0.01);
         }
 
         @DisplayName("When users count = 100")
         @Test
-        void userCountTest100UsersCondition() {
+        void AvgPostsPerUserWith1000UsersCondition() {
             //Given
-            Statistics statisticsMock = mock(Statistics.class);
-            List<String> usersList = new ArrayList<>();
-            for (int i = 0; i <= 99; i++) {
-                usersList.add("user" + i);
+            Statistics statisticsMock = Mockito.mock(Statistics.class);
+            CalculateAdvStatistics forumStats = new CalculateAdvStatistics();
+
+            List<String> mockUsersNames = new ArrayList<>();
+
+            for (int i = 1; i <= 1000; i++) {
+                mockUsersNames.add("Name" + i);
             }
-            when(statisticsMock.usersNames()).thenReturn(usersList);
-            //CalculateAdvStatistics forumStats = new CalculateAdvStatistics(statisticsMock);
+
+            when(statisticsMock.postsCount()).thenReturn(100);
+            when(statisticsMock.usersNames()).thenReturn(mockUsersNames);
 
             //When
-            //int usersCount = forumStats.usersCount();
+            forumStats.calculateAdvStatistics(statisticsMock);
 
             //Then
-            //Assertions.assertEquals(100, usersCount);
+            Assertions.assertEquals(0.10,forumStats.getAvgPostsPerUser(), 0.01);
         }
     }
 }

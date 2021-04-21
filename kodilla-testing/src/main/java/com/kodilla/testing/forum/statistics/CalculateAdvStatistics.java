@@ -1,45 +1,84 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CalculateAdvStatistics {
-    public Statistics statistics;
-    int usersCount;
-    int postsCount;
-    int commentsCount;
-    double avgPostsPerUser;
-    double avgCommentsPerUser;
-    double avgCommentsPerPost;
-
+public class CalculateAdvStatistics implements Statistics {
+    Statistics statistics;
+    public int usersCount;
+    public int postsCount;
+    public int commentsCount;
+    public double avgPostsPerUser;
+    public double avgCommentsPerUser;
+    public double avgCommentsPerPost;
 
     public void calculateAdvStatistics(Statistics statistics) {
 
-        List<Statistics> userNames = new ArrayList<>();
-        usersCount = userNames.size();
+        usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
 
-        if(commentsCount!=0) {
-            avgPostsPerUser= statistics.postsCount() / statistics.usersNames().size();
-        } else {
-            System.out.println("Error: Count of comments = 0!");
-        }
-
         if(usersCount!=0) {
-            avgCommentsPerUser = commentsCount / usersCount;
+            avgPostsPerUser = (double) postsCount / (double) usersCount;
+            avgCommentsPerUser = (double)commentsCount / (double)usersCount;
         } else {
-            System.out.println("Error: Count of users = 0!");
+            avgPostsPerUser = 0;
+            avgCommentsPerUser = 0;
         }
 
         if(postsCount!=0) {
-            avgCommentsPerPost = commentsCount / postsCount;
+            avgCommentsPerPost = (double)commentsCount / (double)postsCount;
         } else {
-            System.out.println("Error: Count of posts = 0!");
+            avgCommentsPerPost=0;
         }
+
+        showStatistics();
+    }
+    public List<String> usersNames() {
+        List<String> usersNames;
+        usersNames = statistics.usersNames();
+        return usersNames;
+    }
+
+    public int postsCount() {
+        postsCount = statistics.postsCount();
+        return postsCount;
+    }
+
+    public int commentsCount() {
+        commentsCount = statistics.commentsCount();;
+        return commentsCount;
+    }
+    public int getUsersCount() {
+        usersCount = statistics.usersNames().size();
+        return  usersCount;
+    }
+
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public double getAvgPostsPerUser() {
+        return avgPostsPerUser;
+    }
+
+    public double getAvgCommentsPerUser() {
+        return avgCommentsPerUser;
+    }
+
+    public double getAvgCommentsPerPost() {
+        return avgCommentsPerPost;
     }
 
     public void showStatistics() {
-        System.out.println("test");
+        System.out.println("Posts count: "+ postsCount + ", comments count: "
+                + commentsCount + ", users count: " + usersCount);
+    }
+
+    public Statistics getStatistics() {
+        return statistics;
     }
 }
