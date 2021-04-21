@@ -30,8 +30,6 @@ public class CalculateAdvStatistics implements Statistics {
         } else {
             avgCommentsPerPost=0;
         }
-
-        showStatistics();
     }
     public List<String> usersNames() {
         List<String> usersNames;
@@ -46,18 +44,6 @@ public class CalculateAdvStatistics implements Statistics {
 
     public int commentsCount() {
         commentsCount = statistics.commentsCount();;
-        return commentsCount;
-    }
-    public int getUsersCount() {
-        usersCount = statistics.usersNames().size();
-        return  usersCount;
-    }
-
-    public int getPostsCount() {
-        return postsCount;
-    }
-
-    public int getCommentsCount() {
         return commentsCount;
     }
 
@@ -75,10 +61,9 @@ public class CalculateAdvStatistics implements Statistics {
 
     public void showStatistics() {
         System.out.println("Posts count: "+ postsCount + ", comments count: "
-                + commentsCount + ", users count: " + usersCount);
-    }
-
-    public Statistics getStatistics() {
-        return statistics;
+                + commentsCount + ", users count: " + usersCount
+                + "\nAverages:\nComments per user: " + avgCommentsPerUser
+                + "\nPosts per user: "+ avgPostsPerUser
+                + "\nComments per post: " + avgCommentsPerPost + "\n");
     }
 }

@@ -12,8 +12,12 @@ import static org.mockito.Mockito.when;
 @DisplayName("Statistics test")
 public class StatisticsTest {
 
+    private static int testCounter = 0;
+
     @BeforeEach
     public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
     }
 
     @Nested
@@ -36,6 +40,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(0,forumStats.getAvgCommentsPerPost());
+            forumStats.showStatistics();
         }
 
         @DisplayName("Test: the number of posts = 1000")
@@ -59,6 +64,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(10,forumStats.getAvgPostsPerUser(), 0.01);
+            forumStats.showStatistics();
         }
     }
 
@@ -87,6 +93,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(0,forumStats.getAvgCommentsPerUser(), 0.01);
+            forumStats.showStatistics();
         }
 
         @DisplayName("Test: the number of comments is less than the number of posts")
@@ -104,6 +111,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(0.91,forumStats.getAvgCommentsPerPost(),0.01);
+            forumStats.showStatistics();
         }
 
         @DisplayName("Test: the number of comments is greater than the number of posts")
@@ -121,6 +129,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(1.11,forumStats.getAvgCommentsPerPost(), 0.01);
+            forumStats.showStatistics();
         }
     }
 
@@ -144,6 +153,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(0,forumStats.getAvgPostsPerUser(), 0.01);
+            forumStats.showStatistics();
         }
 
         @DisplayName("When users count = 100")
@@ -167,6 +177,7 @@ public class StatisticsTest {
 
             //Then
             Assertions.assertEquals(0.10,forumStats.getAvgPostsPerUser(), 0.01);
+            forumStats.showStatistics();
         }
     }
 }
