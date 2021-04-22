@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ProbablyTestSuite {
+public class SecondChallengeTestSuite {
 
     @Test
-    public void seccondChallengeTest() {
+    public void secondChallengeTest() {
         // given
         SecondChallenge secondChallenge = new SecondChallenge();
 
