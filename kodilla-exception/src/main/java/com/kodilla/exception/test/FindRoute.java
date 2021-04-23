@@ -1,7 +1,6 @@
 package com.kodilla.exception.test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class FindRoute {
 
@@ -11,25 +10,22 @@ public class FindRoute {
         String arrivalAirport = flight.getArrivalAirport();
 
         HashMap<String, Boolean> airports = new HashMap<>();
-        //airports.put("Tokyo", true);
-        //airports.put("Berlin", true);
-        //airports.put("Paris", false);
+        airports.put("Tokyo", true);
+        airports.put("Berlin", false);
+        airports.put("Paris", false);
 
         if(airports.size()==0) {
             throw new RouteNotFoundException("List of airports empty!");
         }
 
-        for (Map.Entry<String, Boolean> entry : airports.entrySet()) {
-            if(entry.getKey() == arrivalAirport){
-                foundRoute = entry.getValue();
-            }
-        }
+        foundRoute = airports.getOrDefault(arrivalAirport,true);
 
         if(foundRoute==true) {
             System.out.println("Flight to " + arrivalAirport + " is available");
         } else {
-            System.out.println("Flight to " + arrivalAirport + " is not available");
+            throw new RouteNotFoundException("No flight found!");
         }
+
     }
 
     public static void main(String[] args) {
@@ -39,7 +35,7 @@ public class FindRoute {
         try {
             findRoute.findFlight(flight1);
         } catch (RouteNotFoundException e) {
-            System.out.println("Error: "+e);
+            System.out.println("Error: " + e);
         }
     }
 }
