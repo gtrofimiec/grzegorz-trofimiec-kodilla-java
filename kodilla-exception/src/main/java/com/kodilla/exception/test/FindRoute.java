@@ -11,16 +11,16 @@ public class FindRoute {
 
         HashMap<String, Boolean> airports = new HashMap<>();
         airports.put("Tokyo", true);
-        airports.put("Berlin", false);
+        airports.put("Berlin", true);
         airports.put("Paris", false);
 
         if(airports.size()==0) {
             throw new RouteNotFoundException("List of airports empty!");
         }
 
-        foundRoute = airports.getOrDefault(arrivalAirport,true);
+        foundRoute = airports.getOrDefault(arrivalAirport,false);
 
-        if(foundRoute==true) {
+        if(foundRoute) {
             System.out.println("Flight to " + arrivalAirport + " is available");
         } else {
             throw new RouteNotFoundException("No flight found!");
