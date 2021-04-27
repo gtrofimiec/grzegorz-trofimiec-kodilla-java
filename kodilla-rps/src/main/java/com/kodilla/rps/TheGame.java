@@ -153,7 +153,7 @@ public class TheGame {
     //metoda obsługująca wciśniecie klawisza "n" - nowa gra
     public void newGame() {
         System.out.println("Zakończyć tą grę i rozpocząć od nowa?"
-                + "Wciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER]");
+                + "\nWciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER]");
         String selection = scan.nextLine();
         if (selection.contains("T")) {
             startGame(0);
