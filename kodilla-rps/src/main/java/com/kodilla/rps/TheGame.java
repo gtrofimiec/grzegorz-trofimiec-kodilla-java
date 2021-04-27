@@ -15,25 +15,34 @@ public class TheGame {
 
     Scanner scan = new Scanner(System.in);
 
-    public void Introduction() {
+    public void Introduction() throws NumberFormatException {
         System.out.println("Witam w grze!");
 
-        System.out.println("Podaj swoje imię i zatwiedź klawiszem [ENTER]");
-        //scan.nextLine();
 
         //sprawdzanie, czy podano imię
+        boolean temp = false;
         do {
+            System.out.println("\nPodaj swoje imię i zatwiedź klawiszem [ENTER]");
             playerName = scan.nextLine();
-            if(playerName.equals("")) {
+            if(!playerName.equals("")) {
+                temp = true;
+            } else {
                 System.out.print("Nie przedstawiłeś się");
             }
         }
-        while (playerName.equals(""));
-
+        while (!temp);
         System.out.println("Witaj " + playerName+". Twój przeciwnik nazywa się DeepBlue.");
 
-        System.out.println("Do ilu wygranych gramy?");
-        pointsToWin = Integer.parseInt(scan.nextLine());
+        //sprawdzenie czy poprawnie wprowadzono liczbę rund
+        temp = false;
+        do try {
+            System.out.println("Do ilu wygranych gramy?");
+            pointsToWin = Integer.parseInt(scan.nextLine());
+            temp = true;
+        } catch (NumberFormatException e) {
+            System.out.println("Nie podałeś właściwej wartości. Wpisz cyfrę.");
+        }
+        while(!temp);
     }
 
     public void startGame(int actualRoundNumber) {
@@ -130,7 +139,7 @@ public class TheGame {
 
     //metoda obsługuje wciśniecie klawisza "x" - zakończenie gry
     public void endGame() {
-        System.out.println("Koniec gry? Wciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER}");
+        System.out.println("Koniec gry? Wciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER]");
         String selection = scan.nextLine();
         if (selection.contains("N")) {
             startGame(0);
