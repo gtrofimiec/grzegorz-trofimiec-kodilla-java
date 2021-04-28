@@ -6,4 +6,5 @@ include 'kodilla-rps'
 include 'kodilla-rps'
 include 'MyGame'
 include 'kodilla-MyGame'
+include 'kodilla-MyGame'
 
