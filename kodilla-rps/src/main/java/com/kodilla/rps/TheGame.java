@@ -31,7 +31,7 @@ public class TheGame {
             }
         }
         while (!temp);
-        System.out.println("Witaj " + playerName+". Twój przeciwnik nazywa się DeepBlue.");
+        System.out.println("Witaj " + playerName + ". Twój przeciwnik nazywa się DeepBlue.");
 
         //sprawdzenie czy poprawnie wprowadzono liczbę rund
         temp = false;
@@ -64,19 +64,20 @@ public class TheGame {
 
         while(!end) {
             roundNumber+=1;
-            System.out.println("\n** RUNDA " + roundNumber + " **"
-                    + "\nZagraj klawiszami [1], [2] lub [3] i naciśnij [ENTER]");
-            playerKey = scan.nextLine();
+            System.out.println("\n** RUNDA " + roundNumber + " **");
 
-            //obsługa wciśnięcia klawisza "x"
-            if(playerKey.contains("x")) {
-                endGame();
-            }
+                System.out.println("\nZagraj klawiszami [1], [2] lub [3] i naciśnij [ENTER]");
+                playerKey = scan.nextLine();
 
-            //obsługa wciśnięcia klawisza "n"
-            if(playerKey.contains("n")) {
-                newGame();
-            }
+                //obsługa wciśnięcia klawisza "x"
+                if (playerKey.contains("x")) {
+                    endGame();
+                }
+
+                //obsługa wciśnięcia klawisza "n"
+                if (playerKey.contains("n")) {
+                    newGame();
+                }
 
             compKey = String.valueOf(rand.nextInt(2)+1);
             System.out.println("\nZagrałeś: "+convKey(playerKey)+", przeciwnik zagrał: "+convKey(compKey)
@@ -96,7 +97,7 @@ public class TheGame {
         }
     }
 
-    //metoda ustala znaczenie wciśniętych klawiszy
+    //ustalanie znaczenie wciśniętych klawiszy
     public String convKey(String key) {
         String result="";
 
@@ -137,7 +138,7 @@ public class TheGame {
         return gResult;
     }
 
-    //metoda obsługuje wciśniecie klawisza "x" - zakończenie gry
+    //obsługa wciśniecie klawisza "x" - zakończenie gry
     public void endGame() {
         System.out.println("Koniec gry? Wciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER]");
         String selection = scan.nextLine();
@@ -150,7 +151,7 @@ public class TheGame {
         }
     }
 
-    //metoda obsługująca wciśniecie klawisza "n" - nowa gra
+    //obsługa wciśniecie klawisza "n" - nowa gra
     public void newGame() {
         System.out.println("Zakończyć tą grę i rozpocząć od nowa?"
                 + "\nWciśnij: [T]-tak, [N]-nie i zatwierdź klawiszem [ENTER]");
