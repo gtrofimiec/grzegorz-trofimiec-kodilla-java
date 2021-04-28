@@ -3,8 +3,4 @@ include 'kodilla-testing'
 include 'kodilla-stream'
 include 'kodilla-exception'
 include 'kodilla-rps'
-include 'kodilla-rps'
-include 'MyGame'
 include 'kodilla-MyGame'
-include 'kodilla-MyGame'
-
