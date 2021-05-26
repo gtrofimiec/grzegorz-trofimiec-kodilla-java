@@ -133,8 +133,9 @@ public class TheGame {
             compPunctation +=1;
         } else if(playerKey.contains("1") && compKey.contains("2")) {
             gResult = "PAPIER przykrywa KAMIEN. Przegrywasz rundę!!";
-            compPunctation +=1;
+            compPunctation += 1;
         }
+
         return gResult;
     }
 
