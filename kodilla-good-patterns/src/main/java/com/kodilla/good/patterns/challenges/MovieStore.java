@@ -31,6 +31,7 @@ public class MovieStore {
     }
 
     public static void main(String[] args) {
+
         MovieStore movieStore = new MovieStore();
 
         String string = movieStore.getMovies().values().stream()
