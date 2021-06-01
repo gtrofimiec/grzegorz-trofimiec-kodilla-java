@@ -10,6 +10,5 @@ public class Application {
         OrderingProcessor orderingProcessor = new OrderingProcessor(new MailService(), new OrderingExecution(),
                 new OrderingRep());
         orderingProcessor.process(orderingRequest);
-
     }
 }
