@@ -2,17 +2,17 @@ package com.kodilla.good.patterns.challenges.Food2Door;
 
 public class OrderingDetails {
 
-    private Supplier supplier;
+    private SupplierConstructor supplier;
     private Product product;
     private double productQuantity;
 
-    public OrderingDetails(Supplier supplier, Product product, double productQuantity) {
+    public OrderingDetails(SupplierConstructor supplier, Product product, double productQuantity) {
         this.supplier = supplier;
         this.product = product;
         this.productQuantity = productQuantity;
     }
 
-    public Supplier getSupplier() {
+    public SupplierConstructor getSupplier() {
         return supplier;
     }
 

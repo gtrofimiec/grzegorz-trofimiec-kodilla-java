@@ -1,8 +1,7 @@
 package com.kodilla.good.patterns.challenges.wyzwanie_loty;
 
-import java.util.Objects;
-
 public class Airport {
+
     String airportName;
 
     public Airport(String airportName) {
@@ -13,6 +12,12 @@ public class Airport {
         return airportName;
     }
 
+
+    @Override
+    public String toString() {
+        return airportName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -20,11 +25,11 @@ public class Airport {
 
         Airport airport = (Airport) o;
 
-        return Objects.equals(airportName, airport.airportName);
+        return airportName.equals(airport.airportName);
     }
 
     @Override
     public int hashCode() {
-        return airportName != null ? airportName.hashCode() : 0;
+        return airportName.hashCode();
     }
 }

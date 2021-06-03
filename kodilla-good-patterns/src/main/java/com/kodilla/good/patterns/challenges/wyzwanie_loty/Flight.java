@@ -1,26 +1,24 @@
 package com.kodilla.good.patterns.challenges.wyzwanie_loty;
 
 public class Flight {
+    public Airport departureAirport;
+    public Airport arrivalAirport;
 
-    Airport flightFrom;
-    Airport flightTo;
-    Airport flightVia;
-
-    public Flight(Airport flightFrom, Airport flightTo, Airport flightVia) {
-        this.flightFrom = flightFrom;
-        this.flightTo = flightTo;
-        this.flightVia = flightVia;
+    public Flight(Airport departureAirport, Airport arrivalAirport) {
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
     }
 
-    public Airport getFlightFrom() {
-        return flightFrom;
+    public Airport getDepartureAirport() {
+        return departureAirport;
     }
 
-    public Airport getFlightTo() {
-        return flightTo;
+    public Airport getArrivalAirport() {
+        return arrivalAirport;
     }
 
-    public Airport getFlightVia() {
-        return flightVia;
+    @Override
+    public String toString() {
+        return "Flight (from: " + departureAirport + ", to: " + arrivalAirport+")";
     }
 }
