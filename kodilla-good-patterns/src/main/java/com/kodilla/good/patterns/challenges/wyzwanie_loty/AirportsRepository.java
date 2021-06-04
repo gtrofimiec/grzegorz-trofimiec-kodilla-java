@@ -1,7 +1,8 @@
-//package com.kodilla.good.patterns.challenges.wyzwanie_loty;
-//
-//import java.util.List;
-//
-//public interface AirportsRepository {
-//    List<Airport> getAirportsRepository();
-//}
+package com.kodilla.good.patterns.challenges.wyzwanie_loty;
+
+import java.util.List;
+
+public interface AirportsRepository {
+    List<Airport> getAirportsRepository();
+    Airport getAirport(int i);
+}

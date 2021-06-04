@@ -3,17 +3,16 @@ package com.kodilla.good.patterns.challenges.wyzwanie_loty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightsRepositoryRetriever implements FlightsRepository{
+public class FlightsRepositoryRetriever implements FlightsRepository {
 
     public List<Flight> getFlightsRepository() {
+        AirportsRepositoryRetriever airportsRepository = new AirportsRepositoryRetriever();
         List<Flight> flightList = new ArrayList<>();
-        Airport gdansk = new Airport("Gdansk");
-        Airport wroclaw = new Airport("Wroclaw");
-        Airport krakow = new Airport("Krakow");
+        List<Airport> airportsList = airportsRepository.getAirportsRepository();
 
-        flightList.add(new Flight(gdansk, wroclaw));
-        flightList.add(new Flight(gdansk, krakow));
-        flightList.add(new Flight(krakow, wroclaw));
+        flightList.add(new Flight(airportsList.get(0), airportsList.get(1)));
+        flightList.add(new Flight(airportsList.get(0), airportsList.get(2)));
+        flightList.add(new Flight(airportsList.get(2), airportsList.get(1)));
         return flightList;
     }
 }

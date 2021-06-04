@@ -4,11 +4,28 @@ import java.util.List;
 
 public class FlightSearchingRequest {
 
-    public List<Flight> flightSearchingArrival(Airport searchedAirport){
-        FlightsRepositoryRetriever flightsRepository = new FlightsRepositoryRetriever();
+    AirportsRepository airportsRepository;
+    FlightsRepository flightsRepository;
 
+    public FlightSearchingRequest(FlightsRepository flightsRepository, AirportsRepository airportsRepository) {
+        this.flightsRepository = flightsRepository;
+        this.airportsRepository = airportsRepository;
+    }
+
+    public AirportsRepository getAirportRepository() {
+        return airportsRepository;
+    }
+
+//    public FlightsRepository getFlightsRepository() {
+//        return flightsRepository;
+//    }
+
+    public void flightSearchingArrival(FlightsRepository flightsRepository,
+                                               Airport searchedAirport){
+//        FlightsRepositoryRetriever flightsRepository = new FlightsRepositoryRetriever();
         FlightSearchingProcessor searchingProcessor = new FlightSearchingProcessor();
-        return searchingProcessor.searchingArrival(flightsRepository.getFlightsRepository(),
+
+        searchingProcessor.searchingArrival(flightsRepository.getFlightsRepository(),
                 searchedAirport);
     }
 

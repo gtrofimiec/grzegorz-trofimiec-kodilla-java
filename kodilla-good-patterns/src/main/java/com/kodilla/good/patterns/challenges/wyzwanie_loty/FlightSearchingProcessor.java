@@ -7,9 +7,8 @@ public class FlightSearchingProcessor {
 
     public List<Flight> searchingArrival(List<Flight> searchedList, Airport searchedAirport) {
         searchedList.stream()
-                .map(s->s.getArrivalAirport())
-                .map(s->s.hashCode())
-                .filter(s-> s.equals(searchedAirport))
+                .map(Flight::getArrivalAirport)
+                .filter(s-> s.hashCode()==searchedAirport.hashCode())
                 .collect(Collectors.toList());
         return searchedList;
     }
