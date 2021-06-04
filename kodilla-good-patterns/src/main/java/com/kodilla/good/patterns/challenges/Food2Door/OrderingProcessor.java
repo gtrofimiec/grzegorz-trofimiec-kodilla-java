@@ -2,25 +2,21 @@ package com.kodilla.good.patterns.challenges.Food2Door;
 
 public class OrderingProcessor {
 
-    private InformationService informationService;
-    private OrderingService orderingService;
+    private OrderingDetails orderingDetails;
 
-    public OrderingProcessor(InformationService informationService, OrderingService orderingService) {
-        this.informationService = informationService;
-        this.orderingService = orderingService;
+    public OrderingProcessor(OrderingDetails orderingDetails) {
+        this.orderingDetails = orderingDetails;
     }
 
-    public OrderingDTO process(final OrderingDetails orderingDetails) {
+    public void orderProcess() {
 
-        boolean orderCompleted = orderingService.orderExecute(orderingDetails.getSupplier(),
-                orderingDetails.getProduct(), orderingDetails.getProductQuantity());
-
-        if(orderCompleted) {
-            informationService.inform(orderingDetails.getSupplier(),orderingDetails.getProduct(),
-                    orderingDetails.getProductQuantity());
-            return new OrderingDTO(orderingDetails.getSupplier(), true);
+        boolean processResult = orderingDetails.getSupplier().process();
+        if (processResult) {
+            System.out.println("Specyfication:\nProduct: " + orderingDetails.getProduct()
+                    + "\nProduct quantity: " + orderingDetails.getProductQuantity()
+                    + "\nOrder completed");
         } else {
-            return new OrderingDTO(orderingDetails.getSupplier(), false);
+            System.out.println("Order rejected!");
         }
     }
 }

@@ -1,19 +1,14 @@
 package com.kodilla.good.patterns.challenges.Food2Door;
 
-public class ExtraFoodShop extends SupplierConstructor {
+public class ExtraFoodShop implements Supplier {
 
-    public ExtraFoodShop(String supplierName, String productType) {
-        super(supplierName, productType);
+    @Override
+    public String toString() {
+        return "Extra Food Shop";
     }
 
-    public void process (OrderingDetails orderingDetails) {
-        OrderingProcessor orderingProcessor = new OrderingProcessor
-                (new MailService(), new OrderingExecution());
-        if(orderingDetails.getProduct().productType.equals(orderingDetails.getSupplier().getProductType())) {
-            orderingProcessor.process(orderingDetails);
-        } else {
-            System.out.println("Product " + orderingDetails.getProduct().productType
-                    + " not available from this supplier (" + orderingDetails.getSupplier().getProductType() + ")");
-        }
+    public boolean process() {
+        System.out.println("Order delivered from Extra Food Shop");
+        return true;
     }
 }
