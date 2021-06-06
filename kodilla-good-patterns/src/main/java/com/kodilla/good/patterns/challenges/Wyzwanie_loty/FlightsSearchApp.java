@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.Wyzwanie_loty2;
+package com.kodilla.good.patterns.challenges.Wyzwanie_loty;
 
 public class FlightsSearchApp {
 
