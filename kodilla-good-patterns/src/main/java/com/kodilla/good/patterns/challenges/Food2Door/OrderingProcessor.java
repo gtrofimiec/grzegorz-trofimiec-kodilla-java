@@ -12,7 +12,7 @@ public class OrderingProcessor {
 
         boolean processResult = orderingDetails.getSupplier().process();
         if (processResult) {
-            System.out.println("Specyfication:\nProduct: " + orderingDetails.getProduct()
+            System.out.println("Specification:\nProduct: " + orderingDetails.getProduct()
                     + "\nProduct quantity: " + orderingDetails.getProductQuantity()
                     + "\nOrder completed");
         } else {
