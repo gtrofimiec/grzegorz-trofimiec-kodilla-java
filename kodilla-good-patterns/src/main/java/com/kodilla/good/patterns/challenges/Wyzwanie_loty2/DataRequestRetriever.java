@@ -1,15 +1,15 @@
-package com.kodilla.good.patterns.challenges.Wyzwanie_loty;
+package com.kodilla.good.patterns.challenges.Wyzwanie_loty2;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataRequestRetriever {
 
-    public com.kodilla.good.patterns.challenges.Wyzwanie_loty.DataRequest retrieve() {
-        List<com.kodilla.good.patterns.challenges.Wyzwanie_loty.Airport> airportsList = new ArrayList<>();
-        List<com.kodilla.good.patterns.challenges.Wyzwanie_loty.Flight> flightsList = new ArrayList<>();
+    public DataRequest retrieve() {
+        List<Airport> airportsList = new ArrayList<>();
+        List<Flight> flightsList = new ArrayList<>();
 
-        com.kodilla.good.patterns.challenges.Wyzwanie_loty.Airport gdansk = new Airport("Gdansk");
+        Airport gdansk = new Airport("Gdansk");
         Airport wroclaw = new Airport("Wroclaw");
         Airport krakow = new Airport("Krakow");
         Airport poznan = new Airport("Poznan");
@@ -24,6 +24,7 @@ public class DataRequestRetriever {
         flightsList.add(new Flight(krakow,wroclaw));
         flightsList.add(new Flight(krakow,poznan));
 
-        return new DataRequest(flightsList, airportsList, new Flight(gdansk, poznan), new SearchingArrival());
+        return new DataRequest(flightsList, airportsList, new Flight(gdansk, poznan),
+                new SearchingStopoverFlight());
     }
 }
