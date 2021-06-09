@@ -6,15 +6,15 @@ public class Board {
     TaskList inProgressList;
     TaskList doneList;
 
-    public TaskList getToDoList() {
-        return toDoList;
-    }
-
-    public TaskList getInProgressList() {
-        return inProgressList;
-    }
-
-    public TaskList getDoneList() {
-        return doneList;
-    }
+    //    public TaskList toDoList() {
+//        return new TaskList(toDoList);
+//    }
+//
+//    public TaskList inProgressList() {
+//        return new TaskList(inProgressList);
+//    }
+//
+//    public TaskList doneList() {
+//        return new TaskList(doneList);
+//    }
 }
