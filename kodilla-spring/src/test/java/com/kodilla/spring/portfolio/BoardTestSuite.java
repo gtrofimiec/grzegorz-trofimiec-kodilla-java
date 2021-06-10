@@ -17,12 +17,9 @@ public class BoardTestSuite {
 
 
             //When
-            board.toDoList.tasks.add("Task1");
-//            board.inProgressList.tasks.add("Task2");
-//            board.doneList.tasks.add("Task3");
-//            board.getToDoList();
-//            board.getInProgressList();
-//            board.getDoneList();
+            board.toDoList.tasks.add("task1");
+            board.inProgressList.tasks.add("task2");
+            board.doneList.tasks.add("task3");
 
             //Then
             System.out.println("Element of toDoList" + board.toDoList.tasks.get(0));

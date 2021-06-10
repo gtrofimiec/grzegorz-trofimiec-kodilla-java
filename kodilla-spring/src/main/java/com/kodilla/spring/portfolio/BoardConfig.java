@@ -6,56 +6,33 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BoardConfig {
 
-    TaskList taskList;
-
     @Bean
     public Board board() {
         return new Board();
     }
 
-    @Bean
+    @Bean(name="toDoList")
     public TaskList toDoList() {
-        return new TaskList(toDoList());
+        return new TaskList();
     }
-
-    @Bean
+    @Bean(name="inProgressList")
     public TaskList inProgressList() {
-        return new TaskList(inProgressList());
+        return new TaskList();
     }
-
-    @Bean
+    @Bean(name="doneList")
     public TaskList doneList() {
-        return  new TaskList(doneList());
+        return new TaskList();
     }
 
-
 //    @Bean
-//    public TaskList toDoList() {
-//        return new TaskList(board.toDoList);
+//    public TaskList addInProgressList() {
+//        List<String> inProgressList = new ArrayList<>();
+//        return new TaskList(inProgressList);
 //    }
 //
 //    @Bean
-//    public TaskList getInProgressList() {
-//        return board.inProgressList;
-//    }
-//
-//    @Bean
-//    public TaskList getDoneList() {
-//        return board.doneList;
-//    }
-
-//    @Bean
-//    public TaskList getBoardToDoList() {
-//        return board.getToDoList();
-//    }
-//
-//    @Bean
-//    public TaskList getBoardInProgressList() {
-//        return board.getInProgressList();
-//    }
-//
-//    @Bean
-//    public TaskList getBoardDoneList() {
-//        return board.getDoneList();
+//    public TaskList addDoneList() {
+//        List<String> doneList = new ArrayList<>();
+//        return new TaskList(doneList);
 //    }
 }

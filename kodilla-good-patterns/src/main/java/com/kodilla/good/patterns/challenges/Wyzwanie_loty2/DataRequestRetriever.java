@@ -13,16 +13,20 @@ public class DataRequestRetriever {
         Airport wroclaw = new Airport("Wroclaw");
         Airport krakow = new Airport("Krakow");
         Airport poznan = new Airport("Poznan");
+        Airport warszawa = new Airport("Warszawa");
 
         airportsList.add(gdansk);
         airportsList.add(wroclaw);
         airportsList.add(krakow);
         airportsList.add(poznan);
+        airportsList.add(warszawa);
 
         flightsList.add(new Flight(gdansk,wroclaw));
         flightsList.add(new Flight(gdansk,krakow));
+        flightsList.add(new Flight(gdansk,warszawa));
         flightsList.add(new Flight(krakow,wroclaw));
         flightsList.add(new Flight(krakow,poznan));
+        flightsList.add(new Flight(warszawa,poznan));
 
         return new DataRequest(flightsList, airportsList, new Flight(gdansk, poznan),
                 new SearchingStopoverFlight());
