@@ -22,8 +22,12 @@ public class SearchingStopoverFlight implements SearchingService {
 
         Map<Airport, Flight> collectDeparture = stopoverFlightDeparture.stream()
                 .collect(Collectors.toMap(Flight::getArrivalAirport, flight -> flight));
+
+        
+
         Map<Airport,Flight> collectArrival = stopoverFlightArrival.stream()
                 .collect(Collectors.toMap(Flight::getDepartureAirport, flight->flight));
+
 
         for(Map.Entry<Airport,Flight> entryDep : collectDeparture.entrySet()) {
             for(Map.Entry<Airport,Flight> entryArr : collectArrival.entrySet()) {

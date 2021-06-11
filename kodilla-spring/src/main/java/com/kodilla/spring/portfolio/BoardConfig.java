@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,32 +8,23 @@ import org.springframework.context.annotation.Configuration;
 public class BoardConfig {
 
     @Bean
-    public Board board() {
-        return new Board();
+    public Board board(@Qualifier("toDoList") TaskList taskList1, @Qualifier("inProgressList") TaskList taskList2,
+                       @Qualifier("doneList") TaskList taskList3) {
+        return new Board(taskList1, taskList2, taskList3);
     }
 
     @Bean(name="toDoList")
-    public TaskList toDoList() {
-        return new TaskList();
-    }
-    @Bean(name="inProgressList")
-    public TaskList inProgressList() {
-        return new TaskList();
-    }
-    @Bean(name="doneList")
-    public TaskList doneList() {
+    public TaskList newToDoList() {
         return new TaskList();
     }
 
-//    @Bean
-//    public TaskList addInProgressList() {
-//        List<String> inProgressList = new ArrayList<>();
-//        return new TaskList(inProgressList);
-//    }
-//
-//    @Bean
-//    public TaskList addDoneList() {
-//        List<String> doneList = new ArrayList<>();
-//        return new TaskList(doneList);
-//    }
+    @Bean(name="inProgressList")
+    public TaskList newInProgressList() {
+        return new TaskList();
+    }
+
+    @Bean(name="doneList")
+    public TaskList newDoneList() {
+        return new TaskList();
+    }
 }
