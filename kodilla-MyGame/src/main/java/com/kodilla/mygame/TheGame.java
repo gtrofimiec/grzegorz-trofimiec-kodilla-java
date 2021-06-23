@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import static javafx.scene.paint.Color.BLACK;
 
 public class TheGame extends Application {
+
     //private Image imageback = new Image("file:src/main/resources/table.png");
     private Image table = new Image("file:src/main/resources/table.png",
             700,700,true,true);
