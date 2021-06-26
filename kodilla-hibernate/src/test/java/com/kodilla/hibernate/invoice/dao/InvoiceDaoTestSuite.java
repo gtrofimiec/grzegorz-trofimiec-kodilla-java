@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
@@ -41,9 +42,16 @@ public class InvoiceDaoTestSuite {
         //When
         invoiceDao.save(invoice);
         int invoiceId = invoice.getId();
+        int item1Id = item1.getProduct().getId();
+        int item2Id = item2.getProduct().getId();
+        int item3Id = item3.getProduct().getId();
 
         //Then
         assertNotEquals(0, invoiceId);
+        assertEquals(3, invoice.getItems().size());
+        assertNotEquals(0, item1Id);
+        assertNotEquals(0, item2Id);
+        assertNotEquals(0, item3Id);
 
         //CleanUp
         try {

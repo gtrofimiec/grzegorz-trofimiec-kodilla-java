@@ -1,17 +1,16 @@
 package com.kodilla.sudoku;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuElement {
 
-    int value;
-    public static int EMPTY = -1;
-    List<Integer> posValues;
+    private int value;
+    private static int EMPTY = -1;
+    private List<Integer> posValues;
 
-    public SudokuElement(int value, List<Integer> posValues) {
-        this.value = value;
-        this.posValues = new ArrayList<>();
+    public SudokuElement() {
+        this.value = EMPTY;
+        this.posValues = List.of(1,2,3,4,5,6,7,8,9);
     }
 
     public int getValue() {

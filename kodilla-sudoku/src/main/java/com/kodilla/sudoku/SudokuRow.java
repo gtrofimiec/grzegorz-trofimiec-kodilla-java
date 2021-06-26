@@ -1,13 +1,19 @@
 package com.kodilla.sudoku;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuRow {
 
-    List<SudokuElement> sudokuRow;
+    List<SudokuElement> sudokuElement;
 
     public SudokuRow() {
-        this.sudokuRow = new ArrayList<>();
+        this.sudokuElement = List.of(new SudokuElement(),new SudokuElement()); // uzupełmnić
+    }
+
+    @Override
+    public String toString() {
+        return "SudokuRow{" +
+                "sudokuElement=" + sudokuElement +
+                '}';
     }
 }

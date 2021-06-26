@@ -11,7 +11,7 @@ public class SudokuGenerator {
         List posValues = List.of(1,2,3,4,5,6,7,8,9);
 
         for(int i=0;i<=8;i++) {
-            sudokuRow.sudokuRow.add(new SudokuElement(i, posValues));
+            sudokuRow.sudokuElement.add(new SudokuElement(i));
         }
         return sudokuRow;
     }
@@ -19,14 +19,14 @@ public class SudokuGenerator {
     public SudokuBoard boardGenerator() {
         for(int i=0;i<=8;i++) {
             SudokuRow r = rowGenerator();
-            board.sudokuBoard.add(r);
+            board.sudokuRow.add(r);
         }
         System.out.println(board);
         return board;
     }
 
     public void boardRefreshing(int column, int row, int value) {
-        board.sudokuBoard.get(row+1).sudokuRow.get(column+1).value = value;
+        board.sudokuRow.get(row+1).sudokuElement.get(column+1).value = value;
         System.out.println(board);
     }
 }

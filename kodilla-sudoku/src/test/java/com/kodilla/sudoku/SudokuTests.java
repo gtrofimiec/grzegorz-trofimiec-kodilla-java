@@ -17,7 +17,7 @@ public class SudokuTests {
         SudokuBoard board = generator.boardGenerator();
 
         //Then
-        assertEquals(9, rowsList.sudokuRow.size());
-        assertEquals(9, board.sudokuBoard.size());
+        assertEquals(9, rowsList.sudokuElement.size());
+        assertEquals(9, board.sudokuRow.size());
     }
 }
